@@ -22,23 +22,24 @@
 
 
         </div>
-        <f8-feature-toggle featureName="Test" [userLevel]="user" [defaultLevel]="default"></f8-feature-toggle>
-        <ng-template #user>
-          <div style="background-color: green; opacity: .5">
-            <h1>
-              😀 🤪
-            </h1>
-            <h2>Yay activated just for you</h2>
-          </div>
-        </ng-template>
-        <ng-template #default>
-          <div style="background-color: red;opacity: .5">
-            <h1>
-              😢 😭
-            </h1>
-            <h2>Not activated for your user!</h2>
-          </div>
-        </ng-template>
+        <f8-feature-toggle featureName="Test">
+          <ng-template #userLevel>
+            <div style="background-color: green; opacity: .5">
+              <h1>
+                😀 🤪
+              </h1>
+              <h2>Yay activated just for you</h2>
+            </div>
+          </ng-template>
+          <ng-template #defaultLevel>
+            <div style="background-color: red;opacity: .5">
+              <h1>
+                😢 😭
+              </h1>
+              <h2>Not activated for your user!</h2>
+            </div>
+          </ng-template>
+        </f8-feature-toggle>
 
       </div>
     </div>
@@ -68,7 +69,7 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="UserLevel">UserLevel: </label>
-        <input id="UserLevel" name="UserLevel" type="text" [(ngModel)]="userLevel" (change)="refresh($event)"/>
+        <input id="UserLevel" name="UserLevel" type="text" [(ngModel)]="_userLevel" (change)="refresh($event)"/>
       </div>
     </form>
   </div>

@@ -1,5 +1,6 @@
 import {
   Component,
+  ContentChild,
   Input,
   OnInit,
   TemplateRef
@@ -14,8 +15,8 @@ import { Observable } from 'rxjs';
 export class FeatureToggleComponent implements OnInit {
 
   @Input() featureName: string;
-  @Input() userLevel: TemplateRef<any>;
-  @Input() defaultLevel: TemplateRef<any>;
+  @ContentChild('userLevel') userLevel: TemplateRef<any>;
+  @ContentChild('defaultLevel') defaultLevel: TemplateRef<any>;
 
   enabled: Observable<boolean>;
 

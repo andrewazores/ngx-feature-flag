@@ -29,7 +29,7 @@ export class FeatureToggleExampleComponent implements OnInit {
   featureFlagName: string = 'Test';
   featureFlagEnable: boolean = true;
   featureFlagEnablementLevel: string = 'beta';
-  userLevel: string = 'internal';
+  _userLevel: string = 'internal';
 
   constructor(private featureToggleService: FeatureTogglesService, private cd: ChangeDetectorRef) {
   }
@@ -38,7 +38,7 @@ export class FeatureToggleExampleComponent implements OnInit {
     (this.featureToggleService as any).featureFlagName = this.featureFlagName;
     (this.featureToggleService as any).featureFlagEnable = this.featureFlagEnable;
     (this.featureToggleService as any).featureFlagEnablementLevel = this.featureFlagEnablementLevel;
-    (this.featureToggleService as any).userLevel = this.userLevel;
+    (this.featureToggleService as any).userLevel = this._userLevel;
   }
 
   refresh(updatedField: string) {
@@ -51,16 +51,16 @@ export class FeatureToggleExampleComponent implements OnInit {
       this.featureFlagEnablementLevel !== 'released') {
       this.featureFlagEnablementLevel = (this.featureToggleService as any).featureFlagEnablementLevel; // keep previous valid version
     }
-    if (this.userLevel !== 'internal' &&
-      this.userLevel !== 'experimental' &&
-      this.userLevel !== 'beta' &&
-      this.userLevel !== 'released') {
-      this.userLevel = (this.featureToggleService as any).userLevel; // keep previous valid version
+    if (this._userLevel !== 'internal' &&
+      this._userLevel !== 'experimental' &&
+      this._userLevel !== 'beta' &&
+      this._userLevel !== 'released') {
+      this._userLevel = (this.featureToggleService as any).userLevel; // keep previous valid version
     }
     (this.featureToggleService as any).featureFlagName = this.featureFlagName;
     (this.featureToggleService as any).featureFlagEnable = this.featureFlagEnable;
     (this.featureToggleService as any).featureFlagEnablementLevel = this.featureFlagEnablementLevel;
-    (this.featureToggleService as any).userLevel = this.userLevel;
+    (this.featureToggleService as any).userLevel = this._userLevel;
     this.cd.detectChanges();
     this.toggleComponent.ngOnInit();
   }
